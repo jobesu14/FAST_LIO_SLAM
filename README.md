@@ -16,11 +16,21 @@ Integration of
 ```
     # terminal 1: run FAST-LIO2 
     mkdir -p ~/catkin_fastlio_slam/src
+
+    # build livox_ros_driver (need to built before building FAST_LIO_SLAM)
     cd ~/catkin_fastlio_slam/src
-    git clone https://github.com/gisbi-kim/FAST_LIO_SLAM.git
     git clone https://github.com/Livox-SDK/livox_ros_driver
     cd .. 
     catkin_make
+    source devel/setup.bash
+
+    # build FAST_LIO_SLAM
+    cd src
+    git clone https://github.com/gisbi-kim/FAST_LIO_SLAM.git
+    cd .. 
+    catkin_make
+
+    # run FAST LIO mapping
     source devel/setup.bash
     roslaunch fast_lio mapping_ouster64_mulran.launch # setting for MulRan dataset 
 
